@@ -15,8 +15,8 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".view.StarterActivity" />
-        <activity android:name=".view.SplashActivity">
+        <activity android:name=".screens.StarterActivity" />
+        <activity android:name=".screens.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

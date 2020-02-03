@@ -16,7 +16,6 @@ ext {
             appCompat           : '1.1.0',
             koin                : '2.0.1',
             fragmentKtx         : '1.2.0',
-            picasso             : '2.71828',
             material            : '1.0.0',
             navigationLibrary   : '2.2.0'
 
@@ -44,7 +43,6 @@ allprojects {
     repositories {
         google()
         jcenter()
-
     }
 
     project.ext {

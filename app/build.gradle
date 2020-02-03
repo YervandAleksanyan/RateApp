@@ -56,7 +56,6 @@ dependencies {
     api "androidx.annotation:annotation:${versions.annotation}"
     api "androidx.appcompat:appcompat:${versions.appCompat}"
     implementation "com.google.android.material:material:${versions.material}"
-    implementation "com.squareup.picasso:picasso:${versions.picasso}"
 
     //DI
     implementation "org.koin:koin-android:${versions.koin}"
