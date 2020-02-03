@@ -1,3 +1,3 @@
 <resources>
-    <string name="app_name">viewmodels</string>
+    <string name="unknown_error">Something went wrong.\nPlease try again.</string>
 </resources>
