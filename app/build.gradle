@@ -6,6 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
 
 android {
     compileSdkVersion = project.ext.sharedCompileSdkVersion
@@ -65,4 +67,7 @@ dependencies {
 
     //binding
     kapt "androidx.databinding:databinding-compiler:${versions.binding}"
+
+    implementation "androidx.navigation:navigation-fragment-ktx:${versions.navigationLibrary}"
+    implementation "androidx.navigation:navigation-ui-ktx:${versions.navigationLibrary}"
 }
