@@ -49,7 +49,7 @@ allprojects {
 
     project.ext {
         sharedCompileSdkVersion = 28
-        sharedMinSdkVersion = 21
+        sharedMinSdkVersion = 24
         sharedTargetSdkVersion = 28
         sharedBuildToolsVersion = "28.0.3"
 
