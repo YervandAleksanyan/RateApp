@@ -1,7 +1,8 @@
-package com.task.rateapp
+package com.task.rateapp.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.task.rateapp.R
 
 class StarterActivity : AppCompatActivity() {
 

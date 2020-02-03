@@ -1,9 +1,8 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 ext {
-    // dependency versions (sorted alphabetically)
     versions = [
-            // production dependencies
+
             constraintLayout    : '2.0.0-beta2',
             lifecycleLibrary    : '2.2.0',
             lifecycleLibraryTest: '2.1.0',
@@ -18,13 +17,15 @@ ext {
             koin                : '2.0.1',
             fragmentKtx         : '1.2.0',
             picasso             : '2.71828',
-            material            : '1.0.0'
+            material            : '1.0.0',
+            navigationLibrary   : '2.2.0'
 
     ]
 }
 
 buildscript {
     ext.kotlin_version = '1.3.41'
+    ext.safe_args_version = '2.2.0'
     repositories {
         google()
         jcenter()
@@ -33,6 +34,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$safe_args_version"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
