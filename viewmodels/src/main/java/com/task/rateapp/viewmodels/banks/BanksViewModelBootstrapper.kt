@@ -23,6 +23,7 @@ object BanksViewModelBootstrapper {
                 scoped { (viewModel: BanksViewModel) ->
                     LoadBanksCommand(
                         viewModel,
+                        get(),
                         get()
                     )
                 }

@@ -3,11 +3,11 @@ package com.task.rateapp.viewmodels.base.implementation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.task.animalsapp.viewmodel.base.implementation.BaseCommand
-import com.task.animalsapp.viewmodel.utils.getString
 import com.task.rateapp.viewmodels.R
 import com.task.rateapp.viewmodels.base.IBlockingAsyncCommand
 import com.task.rateapp.viewmodels.base.IDisposableAsyncCommand
 import com.task.rateapp.viewmodels.base.ImmutableLiveData
+import com.task.rateapp.viewmodels.utils.getString
 import kotlinx.coroutines.*
 
 abstract class BaseAsyncCommand : BaseCommand(), IDisposableAsyncCommand, IBlockingAsyncCommand {

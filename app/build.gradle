@@ -63,6 +63,7 @@ dependencies {
 
     //UI
     implementation "androidx.constraintlayout:constraintlayout:$versions.constraintLayout"
+    implementation "com.afollestad.material-dialogs:core:${versions.dialogs}"
 
     //binding
     kapt "androidx.databinding:databinding-compiler:${versions.binding}"
