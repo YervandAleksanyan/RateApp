@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':core', ':viewmodels'
 rootProject.name='RateApp'
