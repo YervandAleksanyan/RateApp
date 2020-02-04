@@ -13,6 +13,9 @@ class LoadBanksCommand(
 ) : BaseAsyncCommand() {
 
     override suspend fun executeCoreAsync(): Boolean {
+        viewModel.sortByBuyOrder.value = null
+        viewModel.sortBySellOrder.value = null
+
         viewModel.initialItems = apiService.getBanksListAsync().await().banks
         viewModel.filterCommand.execute()
         return true

@@ -24,11 +24,19 @@ class BanksViewModel : IBanksViewModel(), Scoped {
 
     override val currencyTypePosition: MutableLiveData<Int> = MutableLiveData()
 
+    override val sortBySellOrder: MutableLiveData<Boolean> = MutableLiveData()
+
+    override val sortByBuyOrder: MutableLiveData<Boolean> = MutableLiveData()
+
     override val loadCommand: IAsyncCommand = commandFactory.loadCommand
 
     override val filterCommand: ICommand = commandFactory.filterCommand
 
     override val setupCommand: ICommand = commandFactory.setupCommand
+
+    override val sortBySellCommand: ICommand = commandFactory.sortBySellCommand
+
+    override val sortByBuyCommand: ICommand = commandFactory.sortByBuyCommand
 
     override fun onCleared() {
         super.onCleared()

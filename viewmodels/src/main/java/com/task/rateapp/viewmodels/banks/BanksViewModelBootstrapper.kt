@@ -39,6 +39,18 @@ object BanksViewModelBootstrapper {
                         viewModel
                     )
                 }
+
+                scoped { (viewModel: BanksViewModel) ->
+                    SortByBuyCommand(
+                        viewModel
+                    )
+                }
+
+                scoped { (viewModel: BanksViewModel) ->
+                    SortBySellCommand(
+                        viewModel
+                    )
+                }
             }
         }
 }

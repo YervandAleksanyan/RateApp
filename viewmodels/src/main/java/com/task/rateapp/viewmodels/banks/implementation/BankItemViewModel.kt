@@ -5,4 +5,8 @@ data class BankItemViewModel(
     val name: String,
     val sell: String,
     val buy: String
-)
+) {
+    var maxSell: String = ""
+    var maxBuy: String = ""
+}
+

@@ -32,7 +32,9 @@ class BanksFragment : Fragment(), ItemBinder<BankItemViewModel> {
             }
 
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, positon: Int, p3: Long) {
-                viewModel.cashTypePosition.value = positon
+                if (viewModel.cashTypePosition.value != positon) {
+                    viewModel.cashTypePosition.value = positon
+                }
             }
 
         }
@@ -44,7 +46,9 @@ class BanksFragment : Fragment(), ItemBinder<BankItemViewModel> {
             }
 
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, positon: Int, p3: Long) {
-                viewModel.currencyTypePosition.value = positon
+                if (viewModel.currencyTypePosition.value != positon) {
+                    viewModel.currencyTypePosition.value = positon
+                }
             }
         }
 
@@ -63,11 +67,18 @@ class BanksFragment : Fragment(), ItemBinder<BankItemViewModel> {
         super.onViewCreated(view, savedInstanceState)
         initBindings()
         setupSpinners()
+        setupSortButtons()
         initRv()
         viewModel.setupCommand.execute()
         if (savedInstanceState == null) {
             viewModel.loadCommand.execute()
         }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        cashTypeSelectListener = null
+        currencyTypeSelectListener = null
     }
 
     override fun getBindingVariable(model: BankItemViewModel): Int = BR.itemViewModel
@@ -105,9 +116,17 @@ class BanksFragment : Fragment(), ItemBinder<BankItemViewModel> {
         )
     }
 
-    override fun onDetach() {
-        super.onDetach()
-        cashTypeSelectListener = null
-        currencyTypeSelectListener = null
+    private fun setupSortButtons() {
+        sell_sort_btn.setOnClickListener {
+            viewModel.sortBySellOrder.value = !(viewModel.sortBySellOrder.value ?: false)
+
+            viewModel.sortByBuyOrder.value = null
+        }
+        buy_sort_btn.setOnClickListener {
+            viewModel.sortByBuyOrder.value = !(viewModel.sortByBuyOrder.value ?: false)
+            viewModel.sortBySellOrder.value = null
+        }
     }
+
+
 }

@@ -17,4 +17,10 @@ internal class BanksViewModelCommandFactory(
 
     val setupCommand: ICommand
         get() = getCommand<SetupBanksViewModelCommand>()
+
+    val sortBySellCommand: ICommand
+        get() = getCommand<SortBySellCommand>()
+
+    val sortByBuyCommand: ICommand
+        get() = getCommand<SortByBuyCommand>()
 }

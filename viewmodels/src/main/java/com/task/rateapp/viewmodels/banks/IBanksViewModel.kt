@@ -14,4 +14,8 @@ abstract class IBanksViewModel : ViewModel() {
     abstract val loadCommand: IAsyncCommand
     abstract val filterCommand: ICommand
     abstract val setupCommand: ICommand
+    abstract val sortBySellCommand: ICommand
+    abstract val sortByBuyCommand: ICommand
+    abstract val sortBySellOrder: MutableLiveData<Boolean>
+    abstract val sortByBuyOrder: MutableLiveData<Boolean>
 }

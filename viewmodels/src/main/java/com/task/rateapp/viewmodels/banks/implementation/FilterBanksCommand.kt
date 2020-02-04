@@ -9,22 +9,32 @@ class FilterBanksCommand(private val viewModel: BanksViewModel) : BaseCommand() 
 
     override fun executeCore() {
         val result = ArrayList<BankItemViewModel>()
-        viewModel.initialItems.map { bank ->
-            val rate =
-                bank.rates.find {
-                    it.currency == Currency.values()[viewModel.currencyTypePosition.value!!]
-                            && it.exchange.cashType == CashType.values()[viewModel.cashTypePosition.value!!]
+        if (!viewModel.initialItems.isNullOrEmpty()) {
+            viewModel.initialItems.map { bank ->
+                val rate =
+                    bank.rates.find {
+                        it.currency == Currency.values()[viewModel.currencyTypePosition.value!!]
+                                && it.exchange.cashType == CashType.values()[viewModel.cashTypePosition.value!!]
+                    }
+                if (rate != null) {
+                    result += BankItemViewModel(
+                        bankKey = bank.key,
+                        name = bank.title,
+                        sell = rate.exchange.exchangeValues.sell.toString(),
+                        buy = rate.exchange.exchangeValues.buy.toString()
+                    )
                 }
-            if (rate != null) {
-                result += BankItemViewModel(
-                    bank.key,
-                    bank.title,
-                    rate.exchange.exchangeValues.sell.toString(),
-                    rate.exchange.exchangeValues.buy.toString()
-                )
             }
+            result.maxBy { it.sell }?.let {
+                it.maxSell = it.sell
+            }
+
+            result.maxBy { it.buy }?.let {
+                it.maxBuy = it.buy
+            }
+
+            viewModel.itemsMutable.value = result
         }
-        viewModel.itemsMutable.value = result
     }
 
 }
