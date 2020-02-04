@@ -1,11 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.task.rateapp.viewmodels.banks.IBanksViewModel" />
+
+        <variable
+            name="view"
+            type="com.task.rateapp.screens.banks.BanksFragment" />
+    </data>
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/white"
         android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/darker_gray"
+            android:orientation="horizontal"
+            android:padding="@dimen/view_spacing">
+
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/view_spacing"
+                android:layout_weight="1"
+                android:background="@android:color/white">
+
+                <Spinner
+                    android:id="@+id/cash_type_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/white">
+
+                <Spinner
+                    android:id="@+id/currency_type_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            isInvisible="@{viewModel.loadCommand.failureMessage}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F5F6F8"
+            android:gravity="end">
+
+            <TextView
+                android:id="@+id/buy_sort_btn"
+                sortButtonIsSelected="@{viewModel.sortByBuyOrder}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/ic_arrow_downward"
+                android:padding="@dimen/list_view_horizontal_margin"
+                android:text="@string/buy"
+                android:textAllCaps="false"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/sell_sort_btn"
+                sortButtonIsSelected="@{viewModel.sortBySellOrder}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:drawableEnd="@drawable/ic_arrow_downward"
+                android:padding="@dimen/list_view_horizontal_margin"
+                android:text="@string/sell"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            isBusy="@{viewModel.loadCommand.isBusy}"
+            loadCommand="@{viewModel.loadCommand}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/view_spacing">
+
+            <com.task.rateapp.controls.bindableRecylcerView.BindableRecyclerView
+                android:id="@+id/banks_rv"
+                itemBinder="@{view}"
+                items="@{viewModel.items}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     </LinearLayout>
 </layout>

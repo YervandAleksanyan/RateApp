@@ -1,4 +1,4 @@
-package com.task.rateapp.view
+package com.task.rateapp.screens
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

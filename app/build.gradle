@@ -56,7 +56,6 @@ dependencies {
     api "androidx.annotation:annotation:${versions.annotation}"
     api "androidx.appcompat:appcompat:${versions.appCompat}"
     implementation "com.google.android.material:material:${versions.material}"
-    implementation "com.squareup.picasso:picasso:${versions.picasso}"
 
     //DI
     implementation "org.koin:koin-android:${versions.koin}"
@@ -64,6 +63,7 @@ dependencies {
 
     //UI
     implementation "androidx.constraintlayout:constraintlayout:$versions.constraintLayout"
+    implementation "com.afollestad.material-dialogs:core:${versions.dialogs}"
 
     //binding
     kapt "androidx.databinding:databinding-compiler:${versions.binding}"

@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">RateApp</string>
+    <string name="buy">Buy</string>
+    <string name="sell">Sell</string>
+    <string-array name="cash_types">
+        <item>Cash</item>
+        <item>Non-cash</item>
+    </string-array>
 </resources>
