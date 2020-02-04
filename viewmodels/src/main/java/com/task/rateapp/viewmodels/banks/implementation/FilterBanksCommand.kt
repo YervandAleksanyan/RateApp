@@ -21,7 +21,8 @@ class FilterBanksCommand(private val viewModel: BanksViewModel) : BaseCommand() 
                         bankKey = bank.key,
                         name = bank.title,
                         sell = rate.exchange.exchangeValues.sell.toString(),
-                        buy = rate.exchange.exchangeValues.buy.toString()
+                        buy = rate.exchange.exchangeValues.buy.toString(),
+                        rates = bank.rates
                     )
                 }
             }

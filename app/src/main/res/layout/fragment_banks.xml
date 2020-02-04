@@ -93,6 +93,7 @@
             <com.task.rateapp.controls.bindableRecylcerView.BindableRecyclerView
                 android:id="@+id/banks_rv"
                 itemBinder="@{view}"
+                clickHandler="@{view.getBankClickHandler()}"
                 items="@{viewModel.items}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
