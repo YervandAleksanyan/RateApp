@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.task.rateapp.viewmodels.bankdetails.IBankDetailsViewModel" />
+
+        <variable
+            name="view"
+            type="com.task.rateapp.screens.bankdetails.BankDetailsFragment" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        tools:context=".screens.StarterActivity">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/collapsing_toolbar_appbarlayout"
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/collapsing_toolbar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:collapsedTitleGravity="center"
+                app:contentScrim="@color/colorPrimary"
+                app:expandedTitleGravity="top|center"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+
+                <ImageView
+                    android:id="@+id/collapsing_toolbar_image_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/bank_image"
+                    app:layout_collapseMode="parallax" />
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/collapsing_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_collapseMode="pin"
+                    app:title="@{viewModel.bankDetails.name}"
+                    tools:title="Inecobank" />
+
+                <RadioGroup
+                    android:id="@+id/cash_views_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:background="@color/colorGrey"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/view_spacing"
+                    app:layout_collapseMode="parallax">
+
+                    <RadioButton
+                        android:id="@+id/cash_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:buttonTint="@android:color/white"
+                        android:text="@string/cash"
+                        android:textColor="@android:color/white"
+                        android:textSize="18sp" />
+
+                    <RadioButton
+                        android:id="@+id/non_cash_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:buttonTint="@android:color/white"
+                        android:text="@string/non_cash"
+                        android:textColor="@android:color/white"
+                        android:textSize="18sp" />
+                </RadioGroup>
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <com.task.rateapp.controls.bindableRecylcerView.BindableRecyclerView
+            android:id="@+id/rates_rv"
+            itemBinder="@{view}"
+            items="@{viewModel.items}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

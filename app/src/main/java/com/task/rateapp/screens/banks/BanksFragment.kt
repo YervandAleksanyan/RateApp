@@ -8,12 +8,15 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.task.rateapp.BR
 import com.task.rateapp.R
 import com.task.rateapp.controls.bindableRecylcerView.bindings.ItemBinder
+import com.task.rateapp.controls.bindableRecylcerView.eventHandlers.ClickHandler
 import com.task.rateapp.databinding.FragmentBanksBinding
 import com.task.rateapp.utils.MarginItemDecoration
+import com.task.rateapp.viewmodels.bankdetails.implementation.BankDetailsArgument
 import com.task.rateapp.viewmodels.banks.IBanksViewModel
 import com.task.rateapp.viewmodels.banks.implementation.BankItemViewModel
 import com.task.ratesapp.core.models.Currency
@@ -105,6 +108,21 @@ class BanksFragment : Fragment(), ItemBinder<BankItemViewModel> {
         )
         currency_type_spinner.onItemSelectedListener = currencyTypeSelectListener
     }
+
+    fun getBankClickHandler(): ClickHandler<BankItemViewModel> =
+        object : ClickHandler<BankItemViewModel> {
+            override fun onClick(viewModel: BankItemViewModel?, view: View) {
+                binding.root.findNavController().navigate(
+                    BanksFragmentDirections.actionBanksFragmentToBankDetailsFragment(
+                        BankDetailsArgument(
+                            name = viewModel?.name!!,
+                            bankKey = viewModel.bankKey,
+                            rates = viewModel.rates
+                        )
+                    )
+                )
+            }
+        }
 
     private fun initRv() {
         banks_rv.layoutManager = LinearLayoutManager(context)
