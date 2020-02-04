@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/banks_fragment">
+
+
+    <fragment
+        android:id="@+id/banks_fragment"
+        android:name="com.task.rateapp.screens.banks.BanksFragment"
+        android:label="BanksFragment">
+        <action
+            android:id="@+id/action_banks_fragment_to_bankDetailsFragment"
+            app:destination="@id/bank_details_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/bank_details_fragment"
+        android:name="com.task.rateapp.screens.bankdetails.BankDetailsFragment"
+        android:label="BankDetailsFragment">
+        <argument
+            android:name="bankDetails"
+            app:argType="com.task.rateapp.viewmodels.bankdetails.implementation.BankDetailsArgument" />
+    </fragment>
+</navigation>
